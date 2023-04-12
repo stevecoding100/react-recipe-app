@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+// Allows us to navigate to different pages
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Importing the pages from the pages folder
+import Home from "./pages/Home";
+import Auth from "./pages/Auth";
+import CreateRecipe from "./pages/CreateRecipe";
+import SavedRecipe from "./pages/SavedRecipe";
+
+// Importing  the components from the components folder
+import Navbar from "./components/Navbar";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <Navbar />
+                <Routes>
+                    {/* This are the different routes we can navigate to. */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/auth" element={<Auth />} />
+                    <Route path="/create-recipe" element={<CreateRecipe />} />
+                    <Route path="/saved-recipe" element={<SavedRecipe />} />
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
